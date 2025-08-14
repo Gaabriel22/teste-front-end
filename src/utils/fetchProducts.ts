@@ -4,7 +4,7 @@ import type { ApiResponse } from "../types/ApiResponse"
 
 export const fetchProduct = async (): Promise<Product[]> => {
   const { data } = await axios.get<ApiResponse>(
-    "https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json"
+    "/econverse/teste-front-end/junior/tecnologia/lista-produtos/produtos.json"
   )
   return data.products
 }
