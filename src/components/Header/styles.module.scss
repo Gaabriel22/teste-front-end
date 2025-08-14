@@ -1,0 +1,140 @@
+@use "../../styles/variables" as *;
+
+.siteHeader {
+  background-color: $bg-white;
+  box-shadow: 0px 8px 16px 0px rgba(57, 48, 19, 0.12);
+}
+
+.headerTop {
+  background-color: $bg-white;
+  border-bottom: 1px solid $border-color;
+}
+
+.headerTopContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 119px;
+  flex-wrap: wrap;
+}
+
+.promoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: $text-light;
+
+  p {
+    margin: 0;
+
+    .boldText {
+      font-weight: 600;
+      color: $primary-blue;
+    }
+  }
+
+  .promoIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.headerMain {
+  padding: 20px 0;
+}
+
+.headerMainContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-left: 80px;
+  padding-right: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.searchBar {
+  flex-grow: 1;
+  max-width: 630px;
+  background-color: #f6f5f2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+
+  input {
+    flex-grow: 1;
+    border: none;
+    background: transparent;
+    height: 48px;
+    outline: none;
+    font-size: 14px;
+    color: $text-light;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .searchIcon {
+    width: 32px;
+    height: 32px;
+    color: $text-light;
+  }
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-right: 20px;
+
+  .headerActionIcon {
+    width: 32px;
+    height: 32px;
+    color: $text-light;
+    cursor: pointer;
+  }
+}
+
+.headerNav {
+  border-top: 1px solid $border-color;
+  padding: 10px 0;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 91px;
+  flex-wrap: wrap;
+  padding-left: 80px;
+
+  a {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-light;
+    transition: color 0.3s;
+
+    &:hover,
+    &.highlight {
+      color: $primary-blue;
+    }
+  }
+
+  .navIconLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
