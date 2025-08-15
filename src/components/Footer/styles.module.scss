@@ -1,0 +1,176 @@
+@use "../../styles/variables" as *;
+
+.siteFooter {
+  margin-top: 60px;
+}
+
+.newsletterSection {
+  background-color: $primary-blue-dark;
+  color: $text-white;
+  padding: 40px 82px 40px 80px;
+}
+
+.newsletterContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.newsletterText {
+  flex: 1;
+  min-width: 300px;
+
+  h3 {
+    font-family: "Outfit", sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.3;
+    margin: 0;
+    max-width: 515px;
+  }
+}
+
+.newsletterForm {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formInputs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  input {
+    flex: 1;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    background-color: $bg-white;
+    font-size: 14px;
+    min-width: 200px;
+  }
+
+  button {
+    padding: 15px 40px;
+    background-color: $primary-yellow;
+    color: #161615;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}
+
+.formTerms {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  label {
+    font-size: 14px;
+  }
+
+  input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    accent-color: $primary-blue;
+    cursor: pointer;
+  }
+}
+
+.footerMain {
+  background-color: $bg-light-gray;
+  padding: 42px 82px;
+}
+
+.footerMainContainer {
+  display: flex;
+  position: relative;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footerAbout {
+  max-width: 354px;
+
+  .footerLogo img {
+    height: 48px;
+    margin-bottom: 18px;
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0 0 27px;
+  }
+}
+
+.socialLinks {
+  display: flex;
+  gap: 26px;
+}
+
+.footerLinksDivider {
+  width: 1px;
+  background-color: rgba(40, 40, 40, 0.18);
+  align-self: stretch;
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+.footerLinksGroup {
+  display: flex;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.footerLinks {
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(34, 34, 34, 0.71);
+    margin: 0 0 20px;
+  }
+
+  ul {
+    li {
+      margin-bottom: 16px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(34, 34, 34, 0.71);
+      font-family: "Work Sans", sans-serif;
+    }
+  }
+}
+
+.footerBottom {
+  background-color: $bg-white;
+  padding: 15px 0;
+  text-align: center;
+
+  p {
+    font-size: 13px;
+    font-weight: 300;
+    color: $text-dark;
+    margin: 0;
+  }
+}
