@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import type { Product } from "../../types/Product"
 import { fetchProduct } from "../../utils/fetchProducts"
 import styles from "./styles.module.scss"
+import { ProductModal } from "../ProductModal"
 
 interface ProductsShowcaseProps {
   showTabs?: boolean
@@ -10,6 +11,9 @@ interface ProductsShowcaseProps {
 
 export const ProductsShowcase = ({ showTabs = true, showViewAll = true }: ProductsShowcaseProps) => {
   const [products, setProducts] = useState<Product[]>([])
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState("CELULAR")
   const carouselRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -27,6 +31,16 @@ export const ProductsShowcase = ({ showTabs = true, showViewAll = true }: Produc
       left: direction === "right" ? scrollAmount : -scrollAmount,
       behavior: "smooth",
     })
+  }
+
+  const openModal = (product: Product) => {
+    setSelectedProduct(product)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setSelectedProduct(null)
+    setIsModalOpen(false)
   }
 
   return (
@@ -49,7 +63,15 @@ export const ProductsShowcase = ({ showTabs = true, showViewAll = true }: Produc
         {showTabs && (
           <nav className={styles.productTabs} aria-label="Categorias de produtos">
             {["CELULAR", "ACESSÓRIOS", "TABLETS", "NOTEBOOKS", "TVS", "VER TODOS"].map((tab) => (
-              <a key={tab} href="#" className={styles.tabLink}>
+              <a
+                key={tab}
+                href="#"
+                className={`${styles.tabLink} ${activeTab === tab ? styles.active : ""}`}
+                onClick={(e) => {
+                  e.preventDefault() 
+                  setActiveTab(tab)
+                }}
+              >
                 {tab}
               </a>
             ))}
@@ -67,15 +89,31 @@ export const ProductsShowcase = ({ showTabs = true, showViewAll = true }: Produc
 
           <div className={styles.productCarousel} ref={carouselRef} role="list">
             {products.map((product, index) => (
-              <article key={index} className={styles.productCard} role="listitem">
+              <article key={index} className={styles.productCard} role="listitem" onClick={() => openModal(product)}>
                 <div className={styles.productImageContainer}>
                   <img src={product.photo} alt={product.productName} className={styles.productImage} loading="lazy" />
                 </div>
                 <div className={styles.productInfo}>
                   <p className={styles.productDescription}>{product.descriptionShort}</p>
-                  <p className={styles.productPriceOld}>R$ {(product.price * 1.05).toFixed(2)}</p>
-                  <p className={styles.productPriceNew}>R$ {product.price.toFixed(2)}</p>
-                  <p className={styles.productInstalments}>ou 2x de R$ {(product.price / 2).toFixed(2)} sem juros</p>
+                  <p className={styles.productPriceOld}>
+                    R${" "}
+                    {(product.price * 1.05).toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}
+                  </p>
+                  <p className={styles.productPriceNew}>
+                    R$ {product.price.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </p>
+                  <p className={styles.productInstalments}>
+                    ou 2x de R${" "}
+                    {(product.price / 2).toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}{" "}
+                    sem juros
+                  </p>
+
                   <p className={styles.productShipping}>Frete grátis</p>
                 </div>
                 <button className={styles.buyButton}>Comprar</button>
@@ -92,6 +130,9 @@ export const ProductsShowcase = ({ showTabs = true, showViewAll = true }: Produc
           </button>
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedProduct && <ProductModal product={selectedProduct} isOpen={isModalOpen} onClose={closeModal} />}
     </section>
   )
 }
