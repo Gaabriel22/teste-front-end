@@ -1,0 +1,135 @@
+@use "../../styles/variables" as *;
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupContent {
+  position: relative;
+  background-color: $text-white;
+  border-radius: 6px;
+  padding: 56.48px 87px 50.58px 56px;
+  display: flex;
+  gap: 32px;
+  max-width: 770px;
+  width: 90%;
+}
+
+.popupClose {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  width: 15px;
+  height: 15px;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.popupImage {
+  flex-shrink: 0;
+
+  img {
+    width: 247px;
+    height: auto;
+  }
+}
+
+.popupDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .productName {
+    font-size: 20;
+    letter-spacing: 1px;
+  }
+
+  .popupPrice {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .popupDescription {
+    font-size: 10px;
+    font-family: "Work Sans", sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    color: $text-light;
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+  }
+
+  .popupDetailsLink {
+    font-family: "Work Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: $primary-blue;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .popupActions {
+    display: flex;
+    gap: 12px;
+
+    .quantitySelector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #d9d9d9;
+      border-radius: 4px;
+      padding: 8px;
+      width: 110px;
+      height: 36px;
+
+      button {
+        background: none;
+        border: none;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: 500;
+        color: $primary-blue-dark;
+      }
+    }
+
+    .btnBuyPopup {
+      flex-grow: 1;
+      background-color: $primary-yellow;
+      color: $primary-blue-dark;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 6px;
+      border: none;
+      width: 188px;
+      height: 36px;
+    }
+  }
+}
